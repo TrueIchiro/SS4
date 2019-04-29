@@ -1,0 +1,1 @@
+general only: prefer /abnorm with specific anatomical term or specific animal: Manual 19.7+, 19.8.1; policy: Manual 23.20+

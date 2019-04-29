@@ -1,0 +1,21 @@
+-- 1 --
+count(//monitor)
+
+-- 2 --
+count(//inventoryData/child::*)
+
+-- 3 --
+//@inventory_id
+
+-- 4 --
+distinct-values(//manufacturer[count(//monitor > 0)]/@manufacturer_id)
+
+-- 5 --
+//monitor[size = 24]
+
+-- 6 --
+//room[count(inventory/pc) > 0 and count(inventory/monitor) > 0]
+
+-- 7 --
+//manufacturerData[contains(@manufacturer_id, 'L')]
+

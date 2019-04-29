@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- based on juergens work -->
+<fhhgb:contactList 
+	xsi:schemaLocation="http://www.fh-hagenberg.at/contacts ue04_contacts.xsd" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:fhhgb="http://www.fh-hagenberg.at/contacts"
+	xmlns="http://www.fh-hagenberg.at/contacts"
+	>	
+	<countries>
+		<country code="AUT">
+			<name>Österreich</name>
+			<telephoneCode>+43</telephoneCode>
+		</country>
+		<country code="DEU">
+			<name>Deutschland</name>
+			<telephoneCode>+49</telephoneCode>
+		</country>
+		<country code="SUI">
+			<name>Schweiz</name>
+			<telephoneCode>+41</telephoneCode>
+		</country>
+		<country code="GBR">
+			<name>Großbritannien</name>
+			<telephoneCode>+44</telephoneCode>
+		</country>
+	</countries>
+	<contacts>
+		<contactEntry id="1">
+			<contact>
+				<person>
+					<salutation>Mr</salutation>
+					<firstName>Wolfgang</firstName>
+					<lastName>Strasser</lastName>
+				</person>
+				<company>FH-OOE</company>
+			</contact>
+			<internet>
+				<eMail>wolfgang.strasser@fh-hagenberg.at</eMail>
+				<website>www.fh-ooe.at</website>
+			</internet>
+			<phone type="business">0660/123456789</phone>
+			<address type="business" mailingAddress="true">
+				<street>Haidfeldstrasse 33</street>
+				<place>Leonding</place>
+				<state>OOE</state>
+				<zipCode>4060</zipCode>
+				<country code="AUT"/>
+			</address>
+		</contactEntry>
+		<contactEntry id="2">
+			<contact>
+				<person>
+					<salutation>Mr</salutation>
+					<firstName>Andreas</firstName>
+					<lastName>Heinzel</lastName>
+				</person>
+				<company>FH-OOE</company>
+			</contact>
+			<internet>
+				<eMail>wolfgang.strasser@fh-hagenberg.at</eMail>
+				<website>www.fh-ooe.at</website>
+			</internet>
+			<phone type="mobile">0664/978654321</phone>
+			<address type="private" mailingAddress="false">
+				<street>Mustermannstrasze. 1</street>
+				<place>Musterdorf</place>
+				<state>OOE</state>
+				<zipCode>5643</zipCode>
+				<country code="AUT"/>
+			</address>
+		</contactEntry>
+		<contactEntry id="3">
+			<contact>
+				<person>
+					<salutation>Mrs</salutation>
+					<firstName>Mona</firstName>
+					<middleName>Ana</middleName>
+					<lastName>Mustermann</lastName>
+				</person>
+				<company>FH-OOE</company>
+			</contact>
+			<internet>
+				<eMail>mona.mustermann@fh-hagenberg.at</eMail>
+				<website>www.mustermann.at</website>
+			</internet>
+			<phone type="private">0664/1111444422</phone>
+			<address type="business" mailingAddress="true">
+				<street>Musterweg 47a</street>
+				<place>Musterstadt</place>
+				<state>BERN</state>
+				<zipCode>1236</zipCode>
+				<country code="SUI"/>
+			</address>
+		</contactEntry>
+	</contacts>
+</fhhgb:contactList>

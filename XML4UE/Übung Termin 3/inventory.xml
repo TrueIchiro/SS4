@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- XML4 UE02 -->
+<inventoryData>
+<roomlist>
+	<room id="LLB2" name="Labor Bioinformatik 2">
+		<inventory>
+			<pc place="p1_1" inventory_id="pc_0001" IsWorking="ja">
+				<manufacturer manufacturer_id="DELL"></manufacturer>
+				<buyingdate>1.1.2011</buyingdate>
+			</pc>
+			<monitor place="p1_1" inventory_id="monitor_0001" IsWorking="ja">
+				<manufacturer manufacturer_id="HP"></manufacturer>
+				<size>24</size>
+			</monitor>
+			<monitor place="p2_1" inventory_id="monitor_0002" IsWorking="nein" WorkCheckDate="06.03.2012">
+				<manufacturer manufacturer_id="HP"></manufacturer>
+				<size>24</size>
+			</monitor>
+			<monitor place="p2_2" inventory_id="monitor_0003" IsWorking="ja">
+				<manufacturer manufacturer_id="HP"></manufacturer>
+				<size>24</size>
+			</monitor>
+		</inventory>
+		<places>
+			<row id="1">
+				<place id="p1_1"/>
+				<place id="p1_2"/>
+				<place id="p1_3"/>
+				<place id="p1_4"/>
+				<place id="p1_5"/>
+			</row>
+			<row id="2">
+				<place id="p2_1"/>
+				<place id="p2_2"/>
+				<place id="p2_3"/>
+				<place id="p2_4"/>
+				<place id="p2_5"/>
+			</row>
+		</places>
+	</room>
+	<room id="LBB1" name="Labor Bioinformatik 1">
+		<inventory>
+			<pc inventory_id="inv_001" IsWorking="nein" WorkCheckDate="1. Maerz 2012" place="p_LBB1_1_1">
+				<manufacturer manufacturer_id="DELL"></manufacturer>
+				<buyingdate>1. Jaenner 2012</buyingdate>
+			</pc>
+		</inventory>
+		<places>
+			<row id="1">
+				<place id="p_LBB1_1_1"></place>
+				<place id="p_LBB1_1_2"></place>
+			</row>
+		</places>
+	</room>
+</roomlist>
+<manufacturerList>
+	<manufacturerData manufacturer_id="DELL"></manufacturerData>
+	<manufacturerData manufacturer_id="HP"></manufacturerData>
+	<manufacturerData manufacturer_id="LENOVO"></manufacturerData>
+</manufacturerList>
+</inventoryData>

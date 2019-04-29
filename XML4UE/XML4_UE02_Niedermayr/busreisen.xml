@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 2.2 XML Instanzdokument -->
+<br:busTravelCompany xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.fh-ooe.at/xml4/busreisen busreisen.xsd" xmlns="http://www.fh-hagenberg.at/xml4/busreisen" xmlns:br="http://www.fh-ooe.at/xml4/busreisen">
+	<br:customers>
+		<br:customer personId="0777">
+			<br:firstName>Samantha</br:firstName>
+			<br:lastName>Blair</br:lastName>
+			<br:email>Sam@space.com</br:email>
+			<br:countryCode>+45</br:countryCode>
+			<br:telNr>0676</br:telNr>
+			<br:address>A7-Icarus Room 30</br:address>
+			<br:zipCode>0000</br:zipCode>
+			<br:numBonusPoints>0</br:numBonusPoints>
+		</br:customer>
+		<br:customer personId="4834">
+			<br:firstName>Evy</br:firstName>
+			<br:lastName></br:lastName>
+			<br:email>Evy@space.none</br:email>
+			<br:countryCode>+00</br:countryCode>
+			<br:telNr>997807485</br:telNr>
+			<br:address></br:address>
+			<br:zipCode>0499</br:zipCode>
+			<br:numBonusPoints>0</br:numBonusPoints>
+		</br:customer>
+		<br:customer personId="957">
+			<br:firstName>Roberta</br:firstName>
+			<br:lastName>De Milos</br:lastName>
+			<br:email>DeMilos.Roberta@gg.com</br:email>
+			<br:countryCode>+56</br:countryCode>
+			<br:telNr>851300</br:telNr>
+			<br:address>Far away street 654</br:address>
+			<br:zipCode>6541</br:zipCode>
+			<br:numBonusPoints>65120</br:numBonusPoints>
+		</br:customer>
+	</br:customers>
+	<br:drivers>
+		<br:driver personId="3873">
+			<br:firstName>Invictus</br:firstName>
+			<br:lastName>Unknown</br:lastName>
+			<br:email>Icarus.Unknown@space.org</br:email>
+			<br:hiringDate>2204-08-13</br:hiringDate>
+		</br:driver>
+		<br:driver personId="5932">
+			<br:firstName>Yakov</br:firstName>
+			<br:lastName>Zolnerowich</br:lastName>
+			<br:email>Zol.Yakov41@iusa.com</br:email>
+			<br:hiringDate>2190-05-12</br:hiringDate>
+		</br:driver>
+	</br:drivers>
+	<br:cities>
+		<br:city cityId="001">
+			<br:stateCode>NT</br:stateCode>
+			<br:cityName>City of Androids</br:cityName>
+		</br:city>
+		<br:city cityId="002">
+			<br:stateCode>PL</br:stateCode>
+			<br:cityName>Pluto</br:cityName>
+		</br:city>
+	</br:cities>
+	<br:travelDates>
+		<br:travelDate startDate="2206-12-07" travelDateOfferIdRef="0445" travelDateId="482539"/>
+		<br:travelDate startDate="2208-03-12" travelDateOfferIdRef="0445" travelDateId="432452"/>
+		<br:travelDate startDate="2205-06-06" travelDateOfferIdRef="4950" travelDateId="32845"/>
+		<br:travelDate startDate="2204-08-14" travelDateOfferIdRef="4950" travelDateId="64133"/>
+	</br:travelDates>
+	<br:travelDateOffers>
+		<br:travelDateOffer travelDateOfferId="0445" cityIdRef="001">
+			<br:price>600</br:price>
+			<br:duration>400</br:duration>
+			<br:description>A trip to escape the Solar System.</br:description>
+			<br:numBonusPoints>9000</br:numBonusPoints>
+			<br:availableUntil>2206-12-01</br:availableUntil>
+			<br:availableFrom>2206-08-01</br:availableFrom>
+		</br:travelDateOffer>
+		<br:travelDateOffer travelDateOfferId="4950" cityIdRef="002">
+			<br:price>420</br:price>
+			<br:duration>365</br:duration>
+			<br:description>A small trip around the world.</br:description>
+			<br:numBonusPoints>80</br:numBonusPoints>
+			<br:availableUntil>2200-01-01</br:availableUntil>
+			<br:availableFrom>2199-01-01</br:availableFrom>
+		</br:travelDateOffer>
+	</br:travelDateOffers>
+	<br:bookings>
+		<br:booking personIdRef="957" travelDateIdRef="482539"></br:booking>
+		<br:booking personIdRef="4834" travelDateIdRef="432452"></br:booking>
+		<br:booking personIdRef="957" travelDateIdRef="64133"></br:booking>
+		<br:booking personIdRef="4834" travelDateIdRef="32845"></br:booking>
+		<br:booking personIdRef="0777" travelDateIdRef="32845"></br:booking>
+	</br:bookings>
+	<br:driverRoutes>
+		<br:driverRoute driverIdRef="3873" travelDateOfferIdRef="0445"/>
+		<br:driverRoute driverIdRef="5932" travelDateOfferIdRef="0445"/>
+		<br:driverRoute driverIdRef="3873" travelDateOfferIdRef="4950"/>
+		<br:driverRoute driverIdRef="5932" travelDateOfferIdRef="4950"/>
+	</br:driverRoutes>
+</br:busTravelCompany>

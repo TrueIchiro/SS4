@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entries>
+	<entry id="a">
+		<value>a - doc 1</value>
+		<value2>a - doc 1</value2>
+		<value3>a - doc 1</value3>
+	</entry>
+	<entry id="b">
+		<value>b - doc 1</value>
+	</entry>
+	<entry id="c">
+		<value>c - doc 1</value>
+	</entry>
+</entries>

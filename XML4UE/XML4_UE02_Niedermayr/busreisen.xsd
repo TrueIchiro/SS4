@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 2.1 XML-Schema -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.fh-ooe.at/xml4/busreisen" xmlns:br="http://www.fh-ooe.at/xml4/busreisen" targetNamespace="http://www.fh-ooe.at/xml4/busreisen" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="busTravelCompany" type="busTravelCompanyType">
+		<xs:annotation>
+			<xs:documentation>
+				Date: 16.03.2019
+				Description: XSD-file for a bustravel company
+				Author: S1710458025
+			</xs:documentation>
+		</xs:annotation>
+		<!-- unique constraint for driver -->
+		<xs:unique name="uniqueDriverId">
+			<xs:selector xpath="br:drivers/br:driver"/>
+			<xs:field xpath="@personId"/>
+		</xs:unique>
+		<!-- unique constraint for customer -->
+		<xs:unique name="uniqueCustomerId">
+			<xs:selector xpath="br:customers/br:customer"/>
+			<xs:field xpath="@personId"/>
+		</xs:unique>
+		<!-- unique constraint for city -->
+		<xs:unique name="uniqueCityId">
+			<xs:selector xpath="br:cities/br:city"/>
+			<xs:field xpath="@cityId"/>
+		</xs:unique>
+		<!-- unique constraint for travelDateOffer -->
+		<xs:unique name="uniqueTravelDateOfferId">
+			<xs:selector xpath="br:travelDateOffers/br:travelDateOffer"/>
+			<xs:field xpath="@travelDateOfferId"/>
+		</xs:unique>
+		<!-- unique constraint for travelDate -->
+		<xs:unique name="uniqueTravelDateId">
+			<xs:selector xpath="br:travelDates/br:travelDate"/>
+			<xs:field xpath="@travelDateId"/>
+		</xs:unique>
+		<!-- key/key-ref for travelDateOffer + travelDate -->
+		<xs:key name="travelDateOfferKey">
+			<xs:selector xpath="br:travelDateOffers/br:travelDateOffer"/>
+			<xs:field xpath="@travelDateOfferId"/>
+		</xs:key>
+		<xs:keyref name="travelDateOfferRef" refer="travelDateOfferKey">
+			<xs:selector xpath="br:travelDates/br:travelDate"/>
+			<xs:field xpath="@travelDateOfferIdRef"/>
+		</xs:keyref>
+		<!-- key/key-ref for city + travelDateOffer -->
+		<xs:key name="cityKey">
+			<xs:selector xpath="br:cities/br:city"/>
+			<xs:field xpath="@cityId"/>
+		</xs:key>
+		<xs:keyref name="cityRef" refer="cityKey">
+			<xs:selector xpath="br:travelDateOffers/br:travelDateOffer"/>
+			<xs:field xpath="@cityIdRef"/>
+		</xs:keyref>
+		<!-- key/key-ref for bookings (with customer) -->
+		<xs:key name="bookedByPersonKey">
+			<xs:selector xpath="br:customers/br:customer"/>
+			<xs:field xpath="@personId"/>
+		</xs:key>
+		<xs:keyref name="bookedByPersonRef" refer="bookedByPersonKey">
+			<xs:selector xpath="br:bookings/br:booking"/>
+			<xs:field xpath="@personIdRef"/>
+		</xs:keyref>
+		<!-- key/key-ref for bookings (with travelDate) -->
+		<xs:key name="bookedTravelDateKey">
+			<xs:selector xpath="br:travelDates/br:travelDate"/>
+			<xs:field xpath="@travelDateId"/>
+		</xs:key>
+		<xs:keyref name="bookedTravelDateRef" refer="bookedTravelDateKey">
+			<xs:selector xpath="br:bookings/br:booking"/>
+			<xs:field xpath="@travelDateIdRef"/>
+		</xs:keyref>
+		<!-- key/key-ref for driverRoutes (with driver) -->
+		<xs:key name="driverIdKey">
+			<xs:selector xpath="br:drivers/br:driver"/>
+			<xs:field xpath="@personId"/>
+		</xs:key>
+		<xs:keyref name="routesDriverIdRef" refer="driverIdKey">
+			<xs:selector xpath="br:driverRoutes/br:driverRoute"/>
+			<xs:field xpath="@driverIdRef"/>
+		</xs:keyref>
+		<!-- key/key-ref for driverRoutes (with travelDateOffer) -->
+		<xs:keyref name="routesTravelDateOfferRef" refer="travelDateOfferKey">
+			<xs:selector xpath="br:driverRoutes/br:driverRoute"/>
+			<xs:field xpath="@travelDateOfferIdRef"/>
+		</xs:keyref>
+	</xs:element>
+	<xs:complexType name="personType">
+		<xs:sequence>
+			<xs:element name="firstName" type="xs:string"/>
+			<xs:element name="lastName" type="xs:string"/>
+			<xs:element name="email">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:pattern value="[a-zA-Z0-9\.]+@[a-zA-Z]+\.[a-zA-Z]+"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<!-- key ref to come -->
+		</xs:sequence>
+		<xs:attribute name="personId" type="xs:integer" use="required"/>
+	</xs:complexType>
+	<!-- extends personType and adds stuff -->
+	<xs:complexType name="customerType">
+		<xs:complexContent>
+			<xs:extension base="personType">
+				<xs:sequence>
+					<xs:element name="countryCode">
+						<xs:simpleType>
+							<xs:restriction base="xs:integer">
+								<xs:pattern value="\+[0-9]{2}"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="telNr" type="xs:integer"/>
+					<xs:element name="address" type="xs:string"/>
+					<xs:element name="zipCode">
+						<!-- add restrictions -->
+						<xs:simpleType>
+							<xs:restriction base="xs:integer">
+								<xs:pattern value="[0-9]{4}"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="numBonusPoints" type="xs:integer"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<!-- driverType is declared -->
+	<xs:complexType name="driverType">
+		<xs:complexContent>
+			<xs:extension base="personType">
+				<xs:sequence>
+					<xs:element name="hiringDate" type="xs:date"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<!-- cityType is declared -->
+	<xs:complexType name="cityType">
+		<xs:sequence>
+			<xs:element name="stateCode">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:length value="2"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="cityName"/>
+		</xs:sequence>
+		<xs:attribute name="cityId" type="xs:string" use="required"/>
+	</xs:complexType>
+	<!-- travelDateType is declared -->
+	<xs:complexType name="travelDateType">
+		<xs:attribute name="startDate" type="xs:date"/>
+		<xs:attribute name="travelDateOfferIdRef" type="xs:integer" use="required"/>
+		<xs:attribute name="travelDateId" type="xs:integer" use="required"/>
+	</xs:complexType>
+	<!-- travelDateOfferType is declared -->
+	<xs:complexType name="travelDateOfferType">
+		<xs:sequence>
+			<xs:element name="price" type="xs:integer"/>
+			<xs:element name="duration" type="xs:integer"/>
+			<xs:element name="description" type="xs:string"/>
+			<xs:element name="numBonusPoints" type="xs:integer"/>
+			<xs:element name="availableUntil" type="xs:date"/>
+			<xs:element name="availableFrom" type="xs:date"/>
+		</xs:sequence>
+		<xs:attribute name="travelDateOfferId" type="xs:integer" use="required"/>
+		<xs:attribute name="cityIdRef" type="xs:string" use="required"/>
+	</xs:complexType>
+	<!-- bookingType is declared -->
+	<xs:complexType name="bookingType">
+		<xs:attribute name="personIdRef" type="xs:integer"/>
+		<xs:attribute name="travelDateIdRef" type="xs:integer"/>
+	</xs:complexType>
+	<!-- driverRoute is declared -->
+	<xs:complexType name="driverRouteType">
+		<xs:attribute name="driverIdRef" type="xs:integer"/>
+		<xs:attribute name="travelDateOfferIdRef" type="xs:integer"/>
+	</xs:complexType>
+	<!-- declaration of busTravelCompany -->
+	<xs:complexType name="busTravelCompanyType">
+		<xs:sequence>
+			<xs:element name="customers">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="customer" type="customerType" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="drivers">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="driver" type="driverType" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="cities">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="city" type="cityType" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="travelDates">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="travelDate" type="travelDateType" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="travelDateOffers">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="travelDateOffer" type="travelDateOfferType" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="bookings">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="booking" type="bookingType" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="driverRoutes">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="driverRoute" type="driverRouteType" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Lisa Niedermayr (S1710458025)
+Abgabedatum: 13.03.2019
+Beispiel 1.1
+-->
+<Rechnung>
+	<KundenAnschrift>
+		<Name>Hans Mustermann</Name>
+		<Adresse>
+			<Strasse>Villa Kunterbunt</Strasse>
+			<HsNr>42</HsNr>
+		</Adresse>
+	</KundenAnschrift>
+	<Lieferanschrift>
+		<Name>
+			<Vorname>Hans</Vorname>
+			<Nachname>Mustermann</Nachname>
+		</Name>
+	</Lieferanschrift>
+	<BestellteArtikel>
+		<!-- Bitte schnell liefern -->
+		<RechPos no="1" artNo="5860" menge="60"/>
+		<RechPos no="3" menge="7" artNo="8874"/>
+		<RechPos no="2" menge="22" artNo="7970"/>
+		<RechPos no="4" artNo="8944"/>
+		<RechPos no="4" menge="77" artNo="8739"/>
+		<RechPos no="5" artNo="4834" menge="4"/>
+		<!-- Dies ist ein Sonderangebot -->
+	</BestellteArtikel>
+</Rechnung>

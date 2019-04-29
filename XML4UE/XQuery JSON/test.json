@@ -1,0 +1,117 @@
+{
+	"countries": [
+		{
+			"code": "AUT",
+			"name": "Ã–sterreich",
+			"telephoneCode": "+43"
+		},
+		{
+			"code": "DEU",
+			"name": "Deutschland",
+			"telephoneCode": "+49"
+		},
+		{
+			"code": "SUI",
+			"name": "Schweiz",
+			"telephoneCode": "+41"
+		},
+		{
+			"code": "GBR",
+			"name": "GroÃŸbritannien",
+			"telephoneCode": "+44"
+		}
+	],
+	"contacts": [
+		{
+			"id": 1,
+			"contact": {
+				"person": {
+					"salutation": "Mr",
+					"firstName": "Wolfgang",
+					"lastName": "Strasser"
+				},
+				"company": "FH-OOE"
+			},
+			"internet": {
+				"eMail": "wolfgang.strasser@fh-hagenberg.at",
+				"website": "www.fh-ooe.at"
+			},
+			"phone": {
+				"type": "business",
+				"phone": "0660/123456789"
+			},
+			"address": {
+				"type": "business",
+				"mailingAddress": "true",
+				"street": "Haidfeldstrasse 33",
+				"place": "Leonding",
+				"state": "OOE",
+				"zipCode": 4060,
+				"country": {
+					"code": "AUT"
+				}
+			}
+		},
+		{
+			"id": 2,
+			"contact": {
+				"person": {
+					"salutation": "Mr",
+					"firstName": "Andreas",
+					"lastName": "Heinzel"
+				},
+				"company": "FH-OOE"
+			},
+			"internet": {
+				"eMail": "wolfgang.strasser@fh-hagenberg.at",
+				"website": "www.fh-ooe.at"
+			},
+			"phone": {
+				"type": "mobile",
+				"phone": "0664/978654321"
+			},
+			"address": {
+				"type": "private",
+				"mailingAddress": "false",
+				"street": "Mustermannstrasze. 1",
+				"place": "Musterdorf",
+				"state": "OOE",
+				"zipCode": 5643,
+				"country": {
+					"code": "AUT"
+				}
+			}
+		},
+		{
+			"id": 3,
+			"contact": {
+				"person": {
+					"salutation": "Mrs",
+					"firstName": "Mona",
+					"middleName": "Ana",
+					"lastName": "Mustermann"
+				},
+				"company": "FH-OOE"
+			},
+			"internet": {
+				"eMail": "mona.mustermann@fh-hagenberg.at",
+				"website": "www.mustermann.at"
+			},
+			"phone": {
+				"type": "private",
+				"phone": "0664/1111444422"
+			},
+			"address": {
+				"type": "business",
+				"mailingAddress": "true",
+				"street": "Musterweg 47a",
+				"place": "Musterstadt",
+				"state": "BERN",
+				"zipCode": 1236,
+				"country": {
+					"code": "SUI"
+				}
+			}
+		}
+	]
+}

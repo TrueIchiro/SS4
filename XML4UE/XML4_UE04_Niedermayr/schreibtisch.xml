@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Schreibtisch>
+	<Benutzer>Wolfgang Strasser</Benutzer>
+	<Raum Nummer="Buero 1">
+		<Gebaeude Nummer="Zentralgebaeude" />
+	</Raum>
+	<Ausstattung>
+		<Computer Type="Notebook" Hersteller="DELL" Modell="E6510"></Computer>
+		<Bildschirm>DELL 24 Zoll</Bildschirm>
+		<Tastatur>Logitech</Tastatur>
+		<Maus>Microsoft</Maus>
+	</Ausstattung>
+</Schreibtisch>

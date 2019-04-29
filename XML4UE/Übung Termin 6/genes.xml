@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genes>
+	<gene refSeqStatus="reviewed" gi="596">
+		<name assignedBy="HGNC">B-cell CLL / lymphoma 2</name>
+		<symbol assignedBy="HGNC">BCL2</symbol>
+		<organism ncbiTaxId="9606"/>
+		<aliases>
+			<symbol>BCL-2</symbol>
+			<symbol>PPP1R50</symbol>
+		</aliases>
+		<summary>This gene encodes an integral outer mitochondrial membrane protein that blocks the apoptotic death of some cells such as lymphocytes. Constitutive expression of <symbol>BCL2</symbol>, such as in the case of translocation of <symbol>BCL2</symbol> to Ig heavy chain locus, is thought to be the cause of follicular lymphoma. Two transcript variants, produced by alternate splicing, differ in their C-terminal ends.</summary>
+	</gene>
+	<gene refSeqStatus="reviewed" gi="55245">
+		<name assignedBy="HGNC">UQCC ubiquinol-cytochrome c reductase complex chaperone</name>
+		<symbol assignedBy="HGNC">UQCC</symbol>
+		<organism ncbiTaxId="9606"/>
+	</gene>
+	<gene refSeqStatus="reviewed" gi="8091">
+		<name>HMGA2 high mobility group AT-hook 2</name>
+		<symbol assignedBy="HGNC">HMGA2</symbol>
+		<organism ncbiTaxId="9606"/>
+		<aliases>
+			<symbol>BABL</symbol>
+			<symbol>LIPO</symbol>
+			<symbol>HMGIC</symbol>
+			<symbol>HMGI-C</symbol>
+			<symbol>STQTL9</symbol>
+		</aliases>
+		<summary>This gene encodes a protein that belongs to the non-histone chromosomal high mobility group (HMG) protein family. HMG proteins function as architectural factors and are essential components of the enhancesome. This protein contains structural DNA-binding domains and may act as a transcriptional regulating factor. Identification of the deletion, amplification, and rearrangement of this gene that are associated with myxoid liposarcoma suggests a role in adipogenesis and mesenchymal differentiation. A gene knock out study of the mouse counterpart demonstrated that this gene is involved in diet-induced obesity. Alternate transcriptional splice variants, encoding different isoforms, have been characterized. </summary>
+	</gene>
+	<gene refSeqStatus="reviewed" gi="12365">
+		<name assignedBy="HGNC">Casp14 caspase 14</name>
+		<symbol assignedBy="HGNC">Casp14provided </symbol>
+		<organism ncbiTaxId="10090"/>
+		<aliases>
+			<symbol>MICE</symbol>
+			<symbol>mini-ICE</symbol>
+			<symbol>MGC123948</symbol>
+		</aliases>
+	</gene>
+</genes>

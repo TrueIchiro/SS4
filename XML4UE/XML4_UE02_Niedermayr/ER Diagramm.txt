@@ -1,0 +1,12 @@
+Zusammen: 
+Person, Customer, Driver
+City
+TravelDate, TravelDateOffer
+
+<TravelDateOffer> //Key unique
+<Price>
+...
+<TravelDates>
+<TravelDate>
+<Eligable Drivers>
+<Driver id="13">

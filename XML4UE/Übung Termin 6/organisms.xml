@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<organsims>
+	<organism id="1">
+		<ncbiTaxId>9606</ncbiTaxId>
+		<name>Homo sapiens</name>
+	</organism>
+	<organism id="2">
+		<ncbiTaxId>10090</ncbiTaxId>
+		<name>Mus musculus</name>
+	</organism>
+</organsims>

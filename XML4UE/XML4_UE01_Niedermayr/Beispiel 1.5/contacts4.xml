@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE contactList SYSTEM "kontakte4.dtd">
+<!--
+Lisa Niedermayr (S1710458025)
+Abgabedatum: 13.03.2019
+Beispiel 1.5
+-->
+<contactList>
+	<countries>
+		<Country Code="AUT">
+		Österreich
+		<CountryTelephoneCode>+43</CountryTelephoneCode>
+		</Country>
+		<Country Code="DEU">
+		Deutschland
+		<CountryTelephoneCode>+49</CountryTelephoneCode>
+		</Country>
+		<Country Code="SUI">
+		Schweiz
+		<CountryTelephoneCode>+41</CountryTelephoneCode>
+		</Country>
+		<Country Code="GBR">
+		Großbritannien
+		<CountryTelephoneCode>+44</CountryTelephoneCode>
+		</Country>
+	</countries>
+	<contacts>
+		<contact id="cId_1337">
+			<contactInfo>
+				<fullName>
+					<title>Mr.</title>
+					<firstName>Nicolas</firstName>
+					<middleName>Nic</middleName>
+					<lastName>Gangsta</lastName>
+					<suffix>-zen</suffix>
+				</fullName>
+				<company>Benriya</company>
+				<jobTitle>Cleaner</jobTitle>
+				<fileAs>Gangsta, Nicolas</fileAs>
+			</contactInfo>
+			<internetInfo>
+				<email>nic_no_care@none.gg</email>
+				<displayAs>Nic (nic_no_care@none.gg)</displayAs>
+				<webPageAddress>www.benriya.gg</webPageAddress>
+				<imAdress>SilentNic</imAdress>
+			</internetInfo>
+			<phoneNumbers>
+				<number type="business">0045 2945</number>
+				<number type="home">0422 7738</number>
+				<number type="fax">0066 7324</number>
+				<number type="mobile">0666 1337</number>
+			</phoneNumbers>
+			<adresses>
+				<business countryOrRegion="AUT">
+					<street>Northern Ring 445</street>
+					<city>Ergastulum</city>
+					<stateOrProvince>Northern Gate</stateOrProvince>
+					<zipOrPostalCode>9990</zipOrPostalCode>
+				</business>
+			</adresses>
+		</contact>
+		<contact id="cId_22">
+			<contactInfo>
+				<fullName>
+					<firstName>PenPen</firstName>
+					<lastName>Pyo</lastName>
+				</fullName>
+				<company>The World</company>
+				<jobTitle>Professional Penguin</jobTitle>
+				<fileAs>Pyo, PenPen</fileAs>
+			</contactInfo>
+			<internetInfo>
+				<email>pen2@pyo-pyo.pui</email>
+				<displayAs>PenyPeny</displayAs>
+				<imAdress>PenToPen</imAdress>
+			</internetInfo>
+			<phoneNumbers>
+				<number type="business">4855 2234</number>
+				<number type="fax">+0224 4234</number>
+			</phoneNumbers>
+			<adresses>
+				<business countryOrRegion="GBR">
+					<city>Neo Tokyo</city>
+					<zipOrPostalCode>0000</zipOrPostalCode>
+				</business>
+			</adresses>
+		</contact>
+		<contact id="cId_969">
+			<contactInfo>
+				<fullName>
+					<title>Mrs.</title>
+					<firstName>Catherine</firstName>
+					<middleName>Amaltia</middleName>
+					<lastName>Roy</lastName>
+				</fullName>
+				<company>IUSA</company>
+				<jobTitle>Engineer</jobTitle>
+				<fileAs>Cath</fileAs>
+			</contactInfo>
+			<internetInfo>
+				<email>cath_is_cool_lel@yoyo.po</email>
+				<displayAs>Cath@Roy</displayAs>
+				<webPageAddress>www.iusa.org/catherine</webPageAddress>
+				<imAdress>Cathastrophic</imAdress>
+			</internetInfo>
+			<phoneNumbers>
+				<number type="business">7377 2895</number>
+				<number type="fax">9843 8405</number>
+				<number type="mobile">7315 4395</number>
+			</phoneNumbers>
+			<adresses>
+				<business countryOrRegion="SUI">
+					<street>Quarter 447</street>
+					<city>Otario</city>
+					<zipOrPostalCode>572387</zipOrPostalCode>
+				</business>
+			</adresses>
+		</contact>
+	</contacts>
+</contactList>

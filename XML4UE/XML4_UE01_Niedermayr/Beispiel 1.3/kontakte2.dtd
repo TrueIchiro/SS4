@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Lisa Niedermayr (S1710458025)
+Abgabedatum: 13.03.2019
+Beispiel 1.3
+-->
+<!ELEMENT contacts (contact*)>
+
+<!ELEMENT contact (contactInfo, internetInfo, phoneNumbers, adresses)>
+<!ATTLIST contact id ID #REQUIRED>
+
+<!-- contactInfo -->
+<!ELEMENT contactInfo (fullName, company?, jobTitle?, fileAs?)>
+
+<!ELEMENT fullName (title?, firstName?, middleName?, lastName, suffix?)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT firstName (#PCDATA)>
+<!ELEMENT middleName (#PCDATA)>
+<!ELEMENT lastName (#PCDATA)>
+<!ELEMENT suffix (#PCDATA)>
+
+<!ELEMENT company (#PCDATA)>
+<!ELEMENT jobTitle (#PCDATA)>
+<!ELEMENT fileAs (#PCDATA)>
+
+<!-- internetInfo -->
+<!ELEMENT internetInfo (email, displayAs?, webPageAddress?, imAdress?)>
+
+<!ELEMENT email (#PCDATA)>
+<!ELEMENT displayAs (#PCDATA)>
+<!ELEMENT webPageAddress (#PCDATA)>
+<!ELEMENT imAdress (#PCDATA)>
+
+<!-- phoneNumbers -->
+<!ELEMENT phoneNumbers (number*)>
+
+<!ELEMENT number (#PCDATA)>
+<!ATTLIST number type (business | home | fax | mobile) #REQUIRED>
+
+<!-- adresses -->
+<!ELEMENT adresses (business?)>
+<!ELEMENT business (street?, city?, stateOrProvince?, zipOrPostalCode?, countryOrRegion?)>
+
+<!ELEMENT street (#PCDATA)>
+<!ELEMENT city (#PCDATA)>
+<!ELEMENT stateOrProvince (#PCDATA)>
+<!ELEMENT zipOrPostalCode (#PCDATA)>
+<!ELEMENT countryOrRegion (#PCDATA)>

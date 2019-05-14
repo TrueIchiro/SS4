@@ -3,12 +3,15 @@ package Beispiel01.Functionalities.Profiler.Implementation;
 import Beispiel01.Functionalities.DataList.DataList;
 import Beispiel01.Functionalities.Profiler.Profiler;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Random;
 
 public class ByteProfiler extends Profiler {
 
     private DataList dataList;
     private DataList storedData;
+    private String name = "ByteProfiler";
 
     private int minWritten;
     private int maxWritten;
@@ -24,6 +27,11 @@ public class ByteProfiler extends Profiler {
 
     public ByteProfiler(DataList dataList) {
         super(dataList, new DataList());
+    }
+
+    public ByteProfiler(DataList dataList, String name) {
+        super(dataList, new DataList());
+        this.name = name;
     }
 
     @Override
@@ -70,8 +78,9 @@ public class ByteProfiler extends Profiler {
 
     public void showStatistic(int waitTimeMinutes) {
         try {
-            Thread.sleep((waitTimeMinutes * 1000));
+            Thread.sleep((waitTimeMinutes * 60000));
 
+            System.out.println("##########");
             System.out.println("ByteProfiler Statistics");
             System.out.println("    Minimal written amount of Bytes: " + minWritten);
             System.out.println("    Maximal written amount of Bytes: " + maxWritten);
@@ -83,10 +92,53 @@ public class ByteProfiler extends Profiler {
             System.out.println("    Average read amount of Bytes: " + avgRead);
             System.out.println("----------");
 
-            System.out.println("    Minimal accesses amount of Bytes: " + minAccesses);
-            System.out.println("    Maximal accesses amount of Bytes: " + maxAccesses);
-            System.out.println("    Average accesses amount of Bytes: " + avgAccesses);
-            System.out.println("----------");
+            System.out.println("    Minimal accesses: " + minAccesses);
+            System.out.println("    Maximal accesses: " + maxAccesses);
+            System.out.println("    Average accesses: " + avgAccesses);
+            System.out.println("##########");
+        } catch (InterruptedException e) {
+
+        }
+    }
+
+    public void writeStatistic(int waitTimeMinutes, String filename) {
+        try {
+            //first time writing to the file
+            FileWriter head = new FileWriter(filename);
+            //writing the header
+            String headWrite = "WrittenBytes;ReadBytes;Accesses" + ";"
+                    + "MinWritten;MaxWritten;AvgWritten" + ";"
+                    + "MinRead;MaxRead;AvgRead" + ";"
+                    + "MinAccesses;MaxAccesses;AvgAccesses"
+                    + "\n";
+            head.write(headWrite);
+            head.close();
+
+            while (true) {
+                //sleep for a 100 years and awake to the Fire Nation attacking
+                Thread.sleep(waitTimeMinutes * 60000);
+
+                //for writing to the file
+                //it will be a csv file!
+                FileWriter writer = new FileWriter(filename, true);
+                String toWrite = this.storedData.get().getFirstData()
+                        + ";" + this.storedData.get().getSecondData()
+                        + ";" + this.storedData.get().getThirdData()
+                        + ";" + this.minWritten
+                        + ";" + this.maxWritten
+                        + ";" + this.avgWritten
+                        + ";" + this.minRead
+                        + ";" + this.maxRead
+                        + ";" + this.avgRead
+                        + ";" + this.minAccesses
+                        + ";" + this.maxAccesses
+                        + ";" + this.avgAccesses
+                        + "\n";
+                writer.write(toWrite);
+                writer.close();
+            }
+        } catch (IOException e) {
+
         } catch (InterruptedException e) {
 
         }
@@ -94,7 +146,7 @@ public class ByteProfiler extends Profiler {
 
     @Override
     public String toString() {
-        return "ByteProfiler";
+        return this.name;
     }
 
 }

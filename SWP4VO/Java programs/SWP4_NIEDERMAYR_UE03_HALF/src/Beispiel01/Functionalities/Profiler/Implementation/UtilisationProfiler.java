@@ -3,12 +3,15 @@ package Beispiel01.Functionalities.Profiler.Implementation;
 import Beispiel01.Functionalities.DataList.DataList;
 import Beispiel01.Functionalities.Profiler.Profiler;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Random;
 
 public class UtilisationProfiler extends Profiler {
 
     private DataList dataList;
     private DataList storedData;
+    private String name = "UtilisationProfiler";
 
     private int minProcessed;
     private int maxProcessed;
@@ -20,6 +23,11 @@ public class UtilisationProfiler extends Profiler {
 
     public UtilisationProfiler(DataList dataList) {
         super(dataList, new DataList());
+    }
+
+    public UtilisationProfiler(DataList dataList, String name) {
+        super(dataList, new DataList());
+        this.name = name;
     }
 
     @Override
@@ -59,8 +67,9 @@ public class UtilisationProfiler extends Profiler {
 
     public void showStatistic(int waitTimeMinutes) {
         try {
-            Thread.sleep((waitTimeMinutes * 1000));
+            Thread.sleep((waitTimeMinutes * 60000));
 
+            System.out.println("##########");
             System.out.println("UtilisationProfiler Statistics");
             System.out.println("    Minimal process utilisation: " + minProcessed);
             System.out.println("    Maximal process utilisation: " + maxProcessed);
@@ -70,7 +79,45 @@ public class UtilisationProfiler extends Profiler {
             System.out.println("    Minimal system utilisation: " + minProcessed);
             System.out.println("    Maximal system utilisation: " + maxProcessed);
             System.out.println("    Average system utilisation: " + avgProcessed);
-            System.out.println("----------");
+            System.out.println("##########");
+        } catch (InterruptedException e) {
+
+        }
+    }
+
+    public void writeStatistic(int waitTimeMinutes, String filename) {
+        try {
+            //first time writing to the file
+            FileWriter head = new FileWriter(filename);
+            //writing the header
+            String headWrite = "ProcessPercentage;SystemPercentage" + ";"
+                    + "MinProcess;MaxProcess;AvgProcess" + ";"
+                    + "MinSystem;MaxSystem;AvgSystem"
+                    + "\n";
+            head.write(headWrite);
+            head.close();
+
+            while (true) {
+                //sleep for a 100 years and awake to the Fire Nation attacking
+                Thread.sleep(waitTimeMinutes * 60000);
+
+                //for writing to the file
+                //it will be a csv file!
+                FileWriter writer = new FileWriter(filename, true);
+                String toWrite = this.storedData.get().getFirstData()
+                        + ";" + this.storedData.get().getSecondData()
+                        + ";" + this.minProcessed
+                        + ";" + this.maxProcessed
+                        + ";" + this.avgProcessed
+                        + ";" + this.minAll
+                        + ";" + this.maxAll
+                        + ";" + this.avgAll
+                        + "\n";
+                writer.write(toWrite);
+                writer.close();
+            }
+        } catch (IOException e) {
+
         } catch (InterruptedException e) {
 
         }
@@ -78,6 +125,6 @@ public class UtilisationProfiler extends Profiler {
 
     @Override
     public String toString() {
-        return "UtilisationProfiler";
+        return this.name;
     }
 }

@@ -12,10 +12,10 @@ public class ServerProfilingTest {
     //TODO: Write document!
 
     public static void main(String[] args) {
-        test01();
+        test05();
     }
 
-    //Using only Storage
+    //Using all Components und Profiler
     public static void test01() {
         DataList d0 = new DataList();
         Component Storage = new StorageComponent(200, d0);
@@ -34,7 +34,7 @@ public class ServerProfilingTest {
         DataList d2 = new DataList();
         Component Temperature = new TemperatureComponent(d2);
         new Thread(Temperature).start();
-        TemperatureProfiler TemperatureProfiler = new TemperatureProfiler(d2);
+        TemperatureProfiler TemperatureProfiler = new TemperatureProfiler(d2, 60);
         Thread t2 = new Thread(TemperatureProfiler);
         t2.start();
 
@@ -51,6 +51,51 @@ public class ServerProfilingTest {
         ByteProfiler ByteProfiler = new ByteProfiler(d4);
         Thread t4 = new Thread(ByteProfiler);
         t4.start();
+    }
+
+    //test with one component for showStatistic
+    public static void test02() {
+        DataList d0 = new DataList();
+        Component Storage = new StorageComponent(200, d0);
+        new Thread(Storage).start();
+        StorageProfiler StorageProfiler = new StorageProfiler(d0);
+        Thread t0 = new Thread(StorageProfiler);
+        t0.start();
+
+        StorageProfiler.showStatistic(1);
+    }
+
+    //test for writeStatistic
+    public static void test03() {
+        DataList d0 = new DataList();
+        Component Storage = new StorageComponent(200, d0);
+        new Thread(Storage).start();
+        StorageProfiler StorageProfiler = new StorageProfiler(d0);
+        Thread t0 = new Thread(StorageProfiler);
+        t0.start();
+
+        StorageProfiler.writeStatistic(1, "output.csv");
+    }
+
+    public static void test04() {
+        DataList d2 = new DataList();
+        Component Temperature = new TemperatureComponent(d2);
+        new Thread(Temperature).start();
+        TemperatureProfiler TemperatureProfiler = new TemperatureProfiler(d2, 60);
+        Thread t2 = new Thread(TemperatureProfiler);
+        t2.start();
+    }
+
+    public static void test05() {
+        DataList d2 = new DataList();
+        Component Temperature = new TemperatureComponent(d2);
+        new Thread(Temperature).start();
+        TemperatureProfiler TemperatureProfiler = new TemperatureProfiler(d2, 80, "First");
+        TemperatureProfiler TemperatureProfiler2 = new TemperatureProfiler(d2, 80, "Second");
+        Thread t2 = new Thread(TemperatureProfiler);
+        Thread t22 = new Thread(TemperatureProfiler2);
+        t2.start();
+        t22.start();
     }
 
 }

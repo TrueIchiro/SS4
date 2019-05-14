@@ -4,12 +4,15 @@ import Beispiel01.Functionalities.DataList.DataList;
 import Beispiel01.Functionalities.DataTypes.ProvidedData;
 import Beispiel01.Functionalities.Profiler.Profiler;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Random;
 
 public class NetworkProfiler extends Profiler {
 
     private DataList dataList;
     private DataList storedData;
+    private String name = "NetworkProfiler";
 
     private int minAccepted;
     private int maxAccepted;
@@ -21,6 +24,11 @@ public class NetworkProfiler extends Profiler {
 
     public NetworkProfiler(DataList dataList) {
         super(dataList, new DataList());
+    }
+
+    public NetworkProfiler(DataList dataList, String name) {
+        super(dataList, new DataList());
+        this.name = name;
     }
 
     @Override
@@ -60,8 +68,9 @@ public class NetworkProfiler extends Profiler {
 
     public void showStatistic(int waitTimeMinutes) {
         try {
-            Thread.sleep((waitTimeMinutes * 1000));
+            Thread.sleep((waitTimeMinutes * 60000));
 
+            System.out.println("##########");
             System.out.println("NetworkProfiler Statistics");
             System.out.println("    Minimal accepted amount of Bytes: " + minAccepted);
             System.out.println("    Maximal accepted amount of Bytes: " + maxAccepted);
@@ -71,7 +80,45 @@ public class NetworkProfiler extends Profiler {
             System.out.println("    Minimal sent amount of Bytes: " + minSent);
             System.out.println("    Maximal sent amount of Bytes: " + maxSent);
             System.out.println("    Average sent amount of Bytes: " + avgSent);
-            System.out.println("----------");
+            System.out.println("##########");
+        } catch (InterruptedException e) {
+
+        }
+    }
+
+    public void writeStatistic(int waitTimeMinutes, String filename) {
+        try {
+            //first time writing to the file
+            FileWriter head = new FileWriter(filename);
+            //writing the header
+            String headWrite = "AcceptedBytes;SentBytes" + ";"
+                    + "MinAccepted;MaxAccepted;AvgAccepted" + ";"
+                    + "MinSent;MaxSent;AvgSent"
+                    + "\n";
+            head.write(headWrite);
+            head.close();
+
+            while (true) {
+                //sleep for a 100 years and awake to the Fire Nation attacking
+                Thread.sleep(waitTimeMinutes * 60000);
+
+                //for writing to the file
+                //it will be a csv file!
+                FileWriter writer = new FileWriter(filename, true);
+                String toWrite = this.storedData.get().getFirstData()
+                        + ";" + this.storedData.get().getSecondData()
+                        + ";" + this.minAccepted
+                        + ";" + this.maxAccepted
+                        + ";" + this.avgAccepted
+                        + ";" + this.minSent
+                        + ";" + this.maxSent
+                        + ";" + this.avgSent
+                        + "\n";
+                writer.write(toWrite);
+                writer.close();
+            }
+        } catch (IOException e) {
+
         } catch (InterruptedException e) {
 
         }
@@ -79,7 +126,7 @@ public class NetworkProfiler extends Profiler {
 
     @Override
     public String toString() {
-        return "NetworkProfiler";
+        return this.name;
     }
 
 }

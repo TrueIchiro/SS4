@@ -1,9 +1,0 @@
-package SWP4_NIEDERMAYR_UE03.Beispiel01.Test;
-
-class ServerProfilingTest {
-
-    public static void main(String[] args) {
-        System.out.println("Hello");
-    }
-
-}

@@ -9,14 +9,13 @@ import java.sql.SQLException;
 public abstract class AbstractDao<T> implements Dao<T> {
 
     //is the url for the database, is needed to connect it
-    protected static final String DATABASE_URL = "";
+    protected static final String DATABASE_URL = "jdbc:derby://localhost:1527/Persons;user=user;password=user";
 
     //for the connection to the database
     private Connection connection;
 
     static {
         try {
-            //TODO: Change this Url
             Class.forName("org.apache.derby.jdbc.ClientDriver").newInstance();
         } catch (InstantiationException
         | IllegalAccessException

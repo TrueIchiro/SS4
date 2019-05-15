@@ -4,9 +4,9 @@ import java.util.List;
 
 public interface Dao<T> {
 
-    T readForIdentity(long id);
+    T readForIdentity(int id);
     List<T> readAll();
     boolean create(T entity);
-    boolean delete(long id);
+    boolean delete(int id);
 
 }

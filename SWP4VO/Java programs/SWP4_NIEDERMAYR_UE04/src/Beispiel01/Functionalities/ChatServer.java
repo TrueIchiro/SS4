@@ -10,6 +10,8 @@ import Beispiel01.Functionalities.Receiver.MessageReceiver;
 import Beispiel01.Functionalities.Send.Implementation.MessageSenderImplementation;
 import Beispiel01.Functionalities.Send.MessageSender;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.net.DatagramSocket;
 import java.net.SocketException;
 
@@ -55,9 +57,27 @@ public class ChatServer {
 
     }
 
-    public static void main(String[] args) {
-        int port = 9999; //TODO: this should be read from the console
-        new ChatServer().initAndStartServer(port);
+    //just another variant that reads from the console
+    private void initAndStartServer() throws Exception {
+        initAndStartServer(readPort());
+    }
+
+    //reads the port from the console
+    private int readPort() throws Exception {
+        int port;
+
+        BufferedReader reader =
+                new BufferedReader(new InputStreamReader(System.in));
+
+        System.out.println("Please enter your port.");
+        port = Integer.valueOf(reader.readLine());
+
+        return port;
+    }
+
+    public static void main(String[] args) throws Exception {
+        //int port = 9999; //TODO: this should be read from the console
+        new ChatServer().initAndStartServer();
     }
 
 }

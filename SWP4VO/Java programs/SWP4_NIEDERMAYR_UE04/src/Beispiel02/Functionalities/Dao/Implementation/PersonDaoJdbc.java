@@ -12,13 +12,69 @@ public class PersonDaoJdbc extends AbstractDao<Person> implements PersonDao {
     //returns one specific person
     @Override
     public Person readForIdentity(int id) {
-        return null;
+        try {
+            int personId = 0;
+            String firstName = "";
+            String lastName = "";
+            String city = "";
+            int postalCode = 000;
+            String address = "";
+            String phoneNumber = "";
+
+        Connection connection = createConnection();
+        //creates the SQL statement
+        Statement statement = connection.createStatement();
+        //actual statement
+        String sql = "SELECT * FROM APP.PERSONS WHERE ID = ?";
+        PreparedStatement stmt= connection.prepareStatement(sql);
+
+        //now set the parameters
+        stmt.setString(1, String.valueOf(id));
+
+        //statement gets executed
+        ResultSet r = stmt.executeQuery();
+
+        //iterate over the query result
+
+                while (r.next()) {
+                    personId = r.getInt("ID");
+                    firstName = r.getString("FIRSTNAME");
+                    lastName = r.getString("LASTNAME");
+                    city = r.getString("CITY");
+                    postalCode = r.getInt("POSTALCODE");
+                    address = r.getString("ADDRESS");
+                    phoneNumber = r.getString("PHONENUMBER");
+
+                }
+
+            Person p = new Person(personId, firstName, lastName, city, postalCode, address, phoneNumber);
+
+                if (p.getFirstName() == "") {
+                    p = null;
+                }
+
+        stmt.close();
+        closeConnection();
+
+        return p;
+    } catch (SQLException e) {
+        //creation of person was not possible
+            return null;
+    }
     }
 
     //returns the list of all persons in the database
     @Override
     public List<Person> readAll() {
         try {
+            int personId = 0;
+            String firstName = "";
+            String lastName = "";
+            String city = "";
+            int postalCode = 000;
+            String address = "";
+            String phoneNumber = "";
+
             List<Person> personList = new ArrayList<Person>();
 
             //first establishe a new connection
@@ -29,7 +85,24 @@ public class PersonDaoJdbc extends AbstractDao<Person> implements PersonDao {
             String sql = "SELECT * FROM APP.PERSONS";
             PreparedStatement stmt= connection.prepareStatement(sql);
 
-            int result = stmt.executeUpdate();
+            //statement gets executed
+            ResultSet r = stmt.executeQuery();
+
+            //iterate over the query result
+
+            while (r.next()) {
+                personId = r.getInt("ID");
+                firstName = r.getString("FIRSTNAME");
+                lastName = r.getString("LASTNAME");
+                city = r.getString("CITY");
+                postalCode = r.getInt("POSTALCODE");
+                address = r.getString("ADDRESS");
+                phoneNumber = r.getString("PHONENUMBER");
+
+                personList.add(new Person(personId, firstName, lastName, city, postalCode, address, phoneNumber));
+            }
+
+            //close everything
             stmt.close();
             closeConnection();
 
@@ -56,9 +129,9 @@ public class PersonDaoJdbc extends AbstractDao<Person> implements PersonDao {
             stmt.setString(1, entity.getFirstName());
             stmt.setString(2, entity.getLastName());
             stmt.setString(3, entity.getCity());
-            stmt.setString(3, String.valueOf(entity.getPostalCode()));
-            stmt.setString(3, entity.getAddress());
-            stmt.setString(3, entity.getPhoneNumber());
+            stmt.setString(4, String.valueOf(entity.getPostalCode()));
+            stmt.setString(5, entity.getAddress());
+            stmt.setString(6, entity.getPhoneNumber());
 
             //statement gets executed
             int result = stmt.executeUpdate();
@@ -81,7 +154,7 @@ public class PersonDaoJdbc extends AbstractDao<Person> implements PersonDao {
             //creates the SQL statement
             Statement statement = connection.createStatement();
             //actual statement
-            String sql = "DELETE FROM APP.PERSONS WHERE PERSONID = ?";
+            String sql = "DELETE FROM APP.PERSONS WHERE ID = ?";
             PreparedStatement stmt= connection.prepareStatement(sql);
 
             //now set the parameters

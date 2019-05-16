@@ -1,6 +1,8 @@
 package Beispiel01.Functionalities;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -63,8 +65,36 @@ public class ChatClient {
         }
     }
 
+    //reads all the arguments from the console
+    private String[] readArgs() throws Exception {
+        String[] args = new String[5];
+
+        BufferedReader reader =
+                new BufferedReader(new InputStreamReader(System.in));
+
+        System.out.println("Please enter the chatroom name.");
+        args[0] = reader.readLine();
+        System.out.println("Please enter your nickname.");
+        args[1] = reader.readLine();
+        System.out.println("Please specify the receivePort.");
+        args[2] = reader.readLine();
+        System.out.println("Please specify the serverHost.");
+        args[3] = reader.readLine();
+        System.out.println("Please specify the serverPort.");
+        args[4] = reader.readLine();
+
+        return args;
+    }
+
+    //when you want to read the data from the console
+    public void startAndInitClient() throws Exception {
+        String[] args = readArgs();
+        startAndInitClient(args);
+    }
+
     public static void main(String[] args) throws  Exception {
-        new ChatClient( ).startAndInitClient( args );
+        //new ChatClient( ).startAndInitClient( args );
+        new ChatClient( ).startAndInitClient();
     }
 
 }

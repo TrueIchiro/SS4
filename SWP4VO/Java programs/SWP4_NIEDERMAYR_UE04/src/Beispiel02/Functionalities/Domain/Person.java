@@ -3,7 +3,8 @@ package Beispiel02.Functionalities.Domain;
 public class Person {
 
     //id is automatically assigned
-    private int id;
+    //per default 666
+    private int id = 666;
     //rest is assigned by the user
     private String firstName;
     private String lastName;
@@ -13,6 +14,16 @@ public class Person {
     private String phoneNumber;
 
     //constructor
+    public Person(int id, String firstName, String lastName, String city, int postalCode, String address, String phoneNumber) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.city = city;
+        this.postalCode = postalCode;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+    }
+
     public Person(String firstName, String lastName, String city, int postalCode, String address, String phoneNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
